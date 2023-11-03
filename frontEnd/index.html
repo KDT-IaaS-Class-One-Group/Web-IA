@@ -20,14 +20,28 @@
           <li><a href="#">Logout</a></li>
         </ul>
       </div>
+      <div id="close"></div>
   </div>
   <script>
     const button = document.getElementById('hamburger-menu');
     console.dir(button);
+    const Li = document.getElementsByTagName("li");
+    console.dir(Li);
+    const closeButton = document.getElementById('close');
+    console.dir(closeButton);
 
     button.addEventListener('click', () => {
-      window.history.back();
-    })
+      Li[0].style.left = "0px";
+      Li[1].style.left = "0px";
+      Li[2].style.left = "0px";
+      Li[3].style.left = "0px";
+    });
+    closeButton.addEventListener('click', () => {
+        Li[0].style.left = "-150px";
+        Li[1].style.left = "-150px";
+        Li[2].style.left = "-150px";
+        Li[3].style.left = "-150px";
+      })
   </script>
 </body>
 </html>
