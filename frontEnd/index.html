@@ -30,18 +30,26 @@
     const closeButton = document.getElementById('close');
     console.dir(closeButton);
 
-    button.addEventListener('click', () => {
-      Li[0].style.left = "0px";
-      Li[1].style.left = "0px";
-      Li[2].style.left = "0px";
-      Li[3].style.left = "0px";
-    });
-    closeButton.addEventListener('click', () => {
-        Li[0].style.left = "-150px";
-        Li[1].style.left = "-150px";
-        Li[2].style.left = "-150px";
-        Li[3].style.left = "-150px";
+//    button.addEventListener('click', () => {
+//      Li[0].style.left = "0px";
+//      Li[1].style.left = "0px";
+//      Li[2].style.left = "0px";
+//      Li[3].style.left = "0px";
+//    });
+
+      button.addEventListener('click', () => {
+        if (Li[0].style.left = "-150px") {
+          Li[0].style.left = "0px";
+        }
       })
+
+
+//    closeButton.addEventListener('click', () => {
+//        Li[0].style.left = "-150px";
+//        Li[1].style.left = "-150px";
+//        Li[2].style.left = "-150px";
+//        Li[3].style.left = "-150px";
+//      })
   </script>
 </body>
 </html>
