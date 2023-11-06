@@ -13,7 +13,7 @@
     <img src="https://em-content.zobj.net/source/microsoft/94/globe-with-meridians_1f310.png" alt="logo">
     <!-- 햄버거 메뉴 -->
       <div id="hamburger-menu">
-        <ul>
+        <ul id="sub-menu">
           <li><a href="#">Home</a></li>
           <li><a href="#">Profile</a></li>
           <li><a href="#">settings</a></li>
@@ -27,8 +27,10 @@
     console.dir(button);
     const Li = document.getElementsByTagName("li");
     console.dir(Li);
-    const closeButton = document.getElementById('close');
-    console.dir(closeButton);
+//    const subMenu = document.getElementById('sub-menu');
+//    const subMenuChildren = subMenu.children;
+//    const closeButton = document.getElementById('close');
+//    console.dir(closeButton);
 
 //    button.addEventListener('click', () => {
 //      Li[0].style.left = "0px";
@@ -39,10 +41,16 @@
 
 
       button.addEventListener('click', () => {
-        if (Li[0].style.left === "-150px") {
+        if (Li[0].style.left === "150px" && Li[1].style.left === "150px" && Li[2].style.left === "150px" && Li[3].style.left === "150px") {
           Li[0].style.left = "0px";
+          Li[1].style.left = "0px";
+          Li[2].style.left = "0px";
+          Li[3].style.left = "0px";
         } else {
           Li[0].style.left = "-150px";
+          Li[1].style.left = "-150px";
+          Li[2].style.left = "-150px";
+          Li[3].style.left = "-150px";
         }
       })
 
