@@ -37,9 +37,12 @@
 //      Li[3].style.left = "0px";
 //    });
 
+
       button.addEventListener('click', () => {
-        if (Li[0].style.left = "-150px") {
+        if (Li[0].style.left === "-150px") {
           Li[0].style.left = "0px";
+        } else {
+          Li[0].style.left = "-150px";
         }
       })
 
