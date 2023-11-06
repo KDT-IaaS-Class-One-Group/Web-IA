@@ -13,7 +13,7 @@
     <img src="https://em-content.zobj.net/source/microsoft/94/globe-with-meridians_1f310.png" alt="logo">
     <!-- 햄버거 메뉴 -->
       <div id="hamburger-menu">
-        <ul id="sub-menu">
+        <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">Profile</a></li>
           <li><a href="#">settings</a></li>
@@ -41,16 +41,14 @@
 
 
       button.addEventListener('click', () => {
-        if (Li[0].style.left === "150px" && Li[1].style.left === "150px" && Li[2].style.left === "150px" && Li[3].style.left === "150px") {
-          Li[0].style.left = "0px";
-          Li[1].style.left = "0px";
-          Li[2].style.left = "0px";
-          Li[3].style.left = "0px";
+        if (Li[0].style.left === "-150px" && Li[1].style.left === "-150px" && Li[2].style.left === "-150px" && Li[3].style.left === "-150px") {
+          for (let i = 0; i < Li.length; i++) {
+            Li[i].style.left = "0px";
+          }
         } else {
-          Li[0].style.left = "-150px";
-          Li[1].style.left = "-150px";
-          Li[2].style.left = "-150px";
-          Li[3].style.left = "-150px";
+          for (let i = 0; i < Li.length; i++) {
+            Li[i].style.left = "-150px";
+          }
         }
       })
 
