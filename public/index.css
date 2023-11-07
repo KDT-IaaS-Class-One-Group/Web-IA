@@ -21,9 +21,11 @@ img {
   display: flex;
   margin-top: 30px;
 }
-#root > div:nth-child(1) > div:nth-child(2) {
-  margin-bottom: 30px;
-  width: 130px;
+#root > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
 }
 #hamburger-menu {
   width: 50px;
@@ -47,10 +49,10 @@ li {
   left: -150px;
 }
 #inputFile {
-  width: 30vw;
-  height: 3vh;
+  width: 50vw;
+  height: 4vh;
 }
 #updateButton {
-  width: 4vw;
-  height: 3.6vh;
+  width: 7vw;
+  height: 4.6vh;
 }
