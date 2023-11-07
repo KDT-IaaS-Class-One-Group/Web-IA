@@ -20,14 +20,23 @@ app.get('/subData', (req, res) => {
 
 // POST 요청 처리
 app.post('/sub', (req, res) => {
+  // 선언명 body에 요청
   const requestData = req.body;
-  // requestData 객체에는 클라이언트가 POST 요청으로 보낸 JSON 데이터가 들어 있습니다
   console.log('POST 요청 데이터:', requestData);
 
-  // 여기에서 requestData를 원하는 방식으로 처리할 수 있습니다.
+  // JSON 파일명을 현재 시간을 기반으로 생성 (예: 2023-11-07-12-34-56.json)
+  const timestamp = new Date().toISOString().replace(/[-:]/g, '');
+  const jsonFileName = `${timestamp}.json`;
 
-  // JSON 형식의 응답을 반환합니다
-  res.json({ message: 'POST 요청에 대한 응답', receivedData: requestData });
+  // JSON 파일을 생성하고 데이터를 저장
+  fs.writeFile(jsonFileName, JSON.stringify(requestData, null, 2), err => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('파일을 생성하거나 저장할 수 없습니다.'); // 오류 응답
+    } else {
+      res.json({ message: 'POST 요청에 대한 응답', savedData: requestData });
+    }
+  });
 });
 
 app.listen(port, () => {
