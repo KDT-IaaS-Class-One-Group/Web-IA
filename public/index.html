@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="root">
+    <div>
+      <div>
+      <!-- logo -->
+      <img src="https://em-content.zobj.net/source/microsoft/94/globe-with-meridians_1f310.png" alt="logo">
+        <!-- 햄버거 메뉴 -->
+        <div id="hamburger-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <!-- user info -->
+        <div>
+          <div>Name : John Doe</div>
+          <div>Status : Online</div>
+          <div>Avatar : <img id="user-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5DLJFQvgD4jMKBfbHJR3VKSCq284zMM_dNw&usqp=CAU" alt="avatar"> </div>
+        </div>
+      </div>
+    </div>
+    <!-- 입력 칸 -->
+      <input type="text" id="inputFile" placeholder="Enter your message here...">
+      <input type="button" id="updateButton" value="submit">
+      <p id="message"></p>
+  </div>
+  <script>
+    const button = document.getElementById('hamburger-menu');
+    console.dir(button);
+    const Li = document.getElementsByTagName("li");
+    console.dir(Li);
+    const update = document.getElementById('updateButton');
+    const input = document.getElementById('inputFile');
+    const pMessage = document.getElementById('message');
+
+      button.addEventListener('click', () => {
+        if (Li[0].style.left === "-150px" && Li[1].style.left === "-150px" && Li[2].style.left === "-150px" && Li[3].style.left === "-150px") {
+          for (let i = 0; i < Li.length; i++) {
+            Li[i].style.left = "0px";
+          }
+        } else {
+          for (let i = 0; i < Li.length; i++) {
+            Li[i].style.left = "-150px";
+          }
+        }
+      })
+      update.addEventListener('click', () => {
+        const data = {
+          name: 'John Doe',
+          email: 'johndoe@example.com',
+        };
+      
+        fetch('/sub', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data), // 데이터 객체를 문자열로 변환하여 전송
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.text();
+            } else {
+              throw new Error('데이터를 업데이트할 수 없습니다.');
+            }
+          })
+          .then(message => console.log(message))
+          .catch(error => console.error(error))
+      });
+  </script>
+</body>
+</html>
