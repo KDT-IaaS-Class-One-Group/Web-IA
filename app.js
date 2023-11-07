@@ -1,7 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { listenerCount } = require('process');
-const bodyParser = require('body-parser')
 const port = 4040;
 const app = express();
 
@@ -10,7 +8,7 @@ app.get('/', (req, res) => {
   res.sendFile(indexPath);
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
 let reData = {value: ''};
 
 app.post('/sub', (req, res) => {
