@@ -33,8 +33,10 @@
       </div>
     </div>
     <!-- 입력 칸 -->
+    <div>
       <input type="text" id="inputFile" placeholder="Enter your message here...">
       <input type="button" id="updateButton" value="submit">
+    </div> 
       <p id="message"></p>
   </div>
   <script>
@@ -59,8 +61,7 @@
       })
       update.addEventListener('click', () => {
         const data = {
-          name: 'John Doe',
-          email: 'johndoe@example.com',
+          message: input.value
         };
       
         fetch('/sub', {
