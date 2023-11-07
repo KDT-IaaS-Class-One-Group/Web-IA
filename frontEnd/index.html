@@ -57,20 +57,27 @@
           }
         }
       })
-      update.addEventListener('click', () => {
-        const value = input.value;
-        fetch('/sub', {
-          method : 'POST',
-          headers : {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({value}),
-        })
-        .then(response => response.json())
-        .then(data => {
-          pMessage.textContent = data.message;
-        });
+    update.addEventListener('click', () => {
+      const value = input.value;
+      fetch('/sub', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ value }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        pMessage.textContent = data.message;
       });
+
+      // GET 요청을 사용하여 서버에 저장된 데이터를 가져와서 p 태그에 출력
+      fetch('/subData')
+      .then(response => response.json())
+      .then(data => {
+        pMessage.textContent = `Data from server: ${data.value}`;
+      });
+    });
   </script>
 </body>
 </html>
