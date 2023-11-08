@@ -49,8 +49,7 @@ app.post('/sub', (req, res) => {
     
 
   // JSON 파일을 생성하고 데이터를 저장
-  // JSON.stringify()메서드 JavaScript 값이나 객체를 JSON 문자열로 변환
-  fs.writeFile(jsonFileName, JSON.stringify(requestData, null, 2), err => {
+  // JSON.stringify()메서드 JavaScript 값이나 객체를 JSON 문자열로 변환`1  fs.writeFile(jsonFileName, JSON.stringify(requestData, null, 3), err => {
     if (err) {
       console.error(err);
       res.status(500).send('파일을 생성하거나 저장할 수 없습니다.'); // 오류 응답
