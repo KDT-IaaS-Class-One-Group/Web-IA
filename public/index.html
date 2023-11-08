@@ -130,7 +130,7 @@
               if (data.hasOwnProperty(key)) {
                 // hasOwnProperty() 메서드 객체를 확인하는 메서드
                 const objectKeyValue = data[key];
-                recordText += key + ':' + objectKeyValue;
+                recordText += key + ':' + objectKeyValue + '\n';
                 pMessage.textContent = recordText;
               }
             }
