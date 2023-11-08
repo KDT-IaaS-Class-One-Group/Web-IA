@@ -124,16 +124,18 @@
           })
           // p태그의 textContent에 대입하는 것은 json 데이터에 객체 속성
           // .then(data => {pMessage.textContent = data.type})
+          
           .then(data => {
             let recordText = '';
             for (let key in data) {
               if (data.hasOwnProperty(key)) {
                 // hasOwnProperty() 메서드 객체를 확인하는 메서드
                 const objectKeyValue = data[key];
-                recordText += key + ':' + objectKeyValue + '\n';
-                pMessage.textContent = recordText;
+                // \n 줄바꿈 키워드
+                recordText += key + ': ' + objectKeyValue + '\n';
               }
             }
+            pMessage.textContent = recordText;
           })
           .catch(error => {
             // 직접 함수를 만들어서 매개변수에 넣지 않아도 이런 작성법으로 메시지를 출력 가능
