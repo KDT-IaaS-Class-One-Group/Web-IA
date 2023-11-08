@@ -61,11 +61,21 @@
           }
         }
       })
+      
+      function hours() {
+        const currentDate = new Date();
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        return `${hours}:${minutes}`
+      }
+
+      const current = hours();
+
       // 서버로 JSON 데이터를 보내는 이벤트 리스너
       update.addEventListener('click', () => {
         const data = {
           message: input.value,
-          timestamp : new Data().toISOString().replace(/[-:]/g, ''),
+          timestamp : current,
         };
       
         fetch('/sub', {
