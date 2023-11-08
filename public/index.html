@@ -125,11 +125,12 @@
           // p태그의 textContent에 대입하는 것은 json 데이터에 객체 속성
           // .then(data => {pMessage.textContent = data.type})
           .then(data => {
+            let recordText = '';
             for (let key in data) {
               if (data.hasOwnProperty(key)) {
                 // hasOwnProperty() 메서드 객체를 확인하는 메서드
                 const objectKeyValue = data[key];
-                const recordText = key + ':' + objectKeyValue;
+                recordText += key + ':' + objectKeyValue;
                 pMessage.textContent = recordText;
               }
             }
