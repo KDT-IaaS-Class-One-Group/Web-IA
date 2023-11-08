@@ -17,8 +17,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/subData', (req, res) => {
-  // 데이터 조회 로직을 작성
-  res.json({ message: 'GET 요청에 대한 응답' });
+  fs.readFile('DataSave.json', (err, data) => {
+    if (err) {
+      res.status(500).json({ error : "데이터를 불러오지 못했습니다." });
+    } else {
+      res.header('Content-Type', 'application/json');
+      res.json(JSON.parse(data));
+    }
+  })
 });
 
 // POST 요청 처리
