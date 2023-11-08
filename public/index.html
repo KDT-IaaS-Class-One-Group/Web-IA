@@ -126,8 +126,12 @@
           // .then(data => {pMessage.textContent = data.type})
           .then(data => {
             for (let key in data) {
-              const object = data.hasOwnProperty(key)
-              pMessage.textContent = key + ':' + object;
+              if (data.hasOwnProperty(key)) {
+                // hasOwnProperty() 메서드 객체를 확인하는 메서드
+                const objectKeyValue = data[key];
+                const recordText = key + ':' + objectKeyValue;
+                pMessage.textContent = recordText;
+              }
             }
           })
           .catch(error => {
