@@ -34,7 +34,8 @@
     </div>
     <!-- 입력 칸 -->
     <div>
-      <input type="text" id="inputFile" placeholder="Enter your message here...">
+      <textarea name="textStory" id="inputFile" cols="30" rows="10" placeholder="Enter your message here..."></textarea>
+      <!-- <input type="text" id="inputFile" placeholder="Enter your message here..."> -->
       <input type="button" id="updateButton" value="submit">
     </div> 
       <p id="message"></p>
@@ -63,7 +64,8 @@
       // 서버로 JSON 데이터를 보내는 이벤트 리스너
       update.addEventListener('click', () => {
         const data = {
-          message: input.value
+          message: input.value,
+          timestamp : new Data().toISOString().replace(/[-:]/g, ''),
         };
       
         fetch('/sub', {
