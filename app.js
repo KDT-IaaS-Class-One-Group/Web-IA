@@ -57,7 +57,6 @@ app.post('/sub', (req, res) => {
       res.json({ message: 'POST 요청에 대한 응답', savedData: requestData });
     }
   });
-});
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
