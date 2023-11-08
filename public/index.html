@@ -97,15 +97,25 @@
           .then(message => console.log(message))
           .catch(error => console.error(error))
 
-//          fetch('DataSave.json')
-//            .then(response => {
-//              if (!response.ok) {
-//                throw new error('데이터를 불러오지 못했습니다.')
-//              } 
-//              return response.json();
-//            })
-//            .then(data => console.log(data))
-//            .catch(error => console.error(error))
+          fetch('/subData', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'text/plain',
+            },
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('네트워크 오류');
+            }
+            return response.json(); // JSON 형식으로 데이터 파싱
+          })
+          .then(data => {
+            // 여기에서 데이터를 사용할 수 있습니다.
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('데이터 불러오기 오류:', error);
+          });
       });
   </script>
 </body>
