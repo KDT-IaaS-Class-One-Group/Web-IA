@@ -123,7 +123,13 @@
             return err.json(); // JSON 형식으로 데이터 파싱
           })
           // p태그의 textContent에 대입하는 것은 json 데이터에 객체 속성
-          .then(data => {pMessage.textContent = data.type})
+          // .then(data => {pMessage.textContent = data.type})
+          .then(data => {
+            for (let key in data) {
+              const object = data.hasOwnProperty(key)
+              pMessage.textContent = key + ':' + object;
+            }
+          })
           .catch(error => {
             // 직접 함수를 만들어서 매개변수에 넣지 않아도 이런 작성법으로 메시지를 출력 가능
             console.error('데이터 불러오기 오류:', error);
