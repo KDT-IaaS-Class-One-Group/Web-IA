@@ -74,7 +74,7 @@
 
       // 서버로 JSON 데이터를 보내는 이벤트 리스너
       update.addEventListener('click', () => {
-        const data = {
+        const dataJson = {
           type : "user",
           message: input.value,
           timestamp : current,
@@ -85,10 +85,12 @@
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data), // 데이터 객체를 문자열로 변환하여 전송
+          body: JSON.stringify(dataJson), // 데이터 객체를 문자열로 변환하여 전송
         })
           .then(response => {
-            if (response.ok) {
+            // response.ok는 성공 여부를 나타낸다.
+            // 매개변수만 써도 작동 유무는 상관 없다.
+            if (response) {
               return response.text();
             } else {
               throw new Error('데이터를 업데이트할 수 없습니다.');
@@ -106,25 +108,26 @@
           text.catch(error => console.log(error))
 
 
-//          fetch('/subData', {
-//            method: 'GET',
-//            headers: {
-//              'Content-Type': 'text/plain',
-//            },
-//          })
-//          // 일반적으로 response 매개변수로 사용하는 이유는 가독성 때문이다.
-//          .then(response => {
-//            if (response) {
-//              throw new Error('네트워크 오류');
-//            }
-//            return response.json(); // JSON 형식으로 데이터 파싱
-//          })
-//
-//          .then(data => {pMessage})
-//          .catch(error => {
-//            // 직접 함수를 만들어서 매개변수에 넣지 않아도 이런 작성법으로 메시지를 출력 가능
-//            console.error('데이터 불러오기 오류:', error);
-//          });
+          fetch('/subData', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'text/plain',
+            },
+          })
+          // 일반적으로 response 매개변수로 사용하는 이유는 가독성 때문이다.
+          // 에러 처리 문구를 위한 then
+          .then(err => {
+            if (!err) {
+              throw new Error('네트워크 오류');
+            }
+            return err.json(); // JSON 형식으로 데이터 파싱
+          })
+          // p태그의 textContent에 대입하는 것은 json 데이터에 객체 속성
+          .then(data => {pMessage.textContent = data.type})
+          .catch(error => {
+            // 직접 함수를 만들어서 매개변수에 넣지 않아도 이런 작성법으로 메시지를 출력 가능
+            console.error('데이터 불러오기 오류:', error);
+          });
       });
   </script>
 </body>
