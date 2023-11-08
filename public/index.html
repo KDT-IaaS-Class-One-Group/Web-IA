@@ -96,34 +96,35 @@
           })
 
           // 매개변수에 단순히 메시지를 넣기 위해 만든 함수
-          const text = promise((message, error) => {
-            message("성공입니다!");
-            error("에러 났어 어서 고쳐")
+          // new 키워드는 생성자 함수 이고 일반적인 function은 promise then catch를 쓸 수 없다.
+          const text = new Promise((message, error) => {
+            message = "성공입니다!"; 
+            error = "에러 났어 어서 고쳐";
           });
 
           text.then(message => console.log(message))
           text.catch(error => console.log(error))
 
 
-          fetch('/subData', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'text/plain',
-            },
-          })
-          // 일반적으로 response 매개변수로 사용하는 이유는 가독성 때문이다.
-          .then(err => {
-            if (err) {
-              throw new Error('네트워크 오류');
-            }
-            return err.json(); // JSON 형식으로 데이터 파싱
-          })
-
-          .then(data => {console.log(data);})
-          .catch(error => {
-            // 직접 함수를 만들어서 매개변수에 넣지 않아도 이런 작성법으로 메시지를 출력 가능
-            console.error('데이터 불러오기 오류:', error);
-          });
+//          fetch('/subData', {
+//            method: 'GET',
+//            headers: {
+//              'Content-Type': 'text/plain',
+//            },
+//          })
+//          // 일반적으로 response 매개변수로 사용하는 이유는 가독성 때문이다.
+//          .then(response => {
+//            if (response) {
+//              throw new Error('네트워크 오류');
+//            }
+//            return response.json(); // JSON 형식으로 데이터 파싱
+//          })
+//
+//          .then(data => {pMessage})
+//          .catch(error => {
+//            // 직접 함수를 만들어서 매개변수에 넣지 않아도 이런 작성법으로 메시지를 출력 가능
+//            console.error('데이터 불러오기 오류:', error);
+//          });
       });
   </script>
 </body>
